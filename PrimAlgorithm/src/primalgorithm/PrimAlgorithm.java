@@ -19,12 +19,14 @@ public class PrimAlgorithm {
 
         try{
             text = new Scanner(file);
+            
+            
             while(text.hasNextLine()) {
                 String line = text.nextLine();
                 
                 
                 if(line.isEmpty()){
-                    System.out.println("O grafo fornecido contém linha em branco, favor apagar!!");
+                    System.out.println("ERRO: O grafo fornecido contém linha em branco, favor apagar!!");
                 }
             }
             
