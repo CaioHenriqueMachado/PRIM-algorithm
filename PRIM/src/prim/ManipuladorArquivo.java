@@ -1,4 +1,4 @@
-package novoprim;
+package prim;
 
 import java.io.BufferedReader;
 

@@ -1,4 +1,4 @@
-package novoprim;
+package prim;
 
 
 public class PesoArestas {

@@ -25,3 +25,6 @@ hs_err_pid*
 /PrimAlgorithm/build/
 /novoPrim/nbproject/private/
 /novoPrim/build/
+/PrimAlgorithm/dist/
+/PRIM/nbproject/private/
+/PRIM/build/

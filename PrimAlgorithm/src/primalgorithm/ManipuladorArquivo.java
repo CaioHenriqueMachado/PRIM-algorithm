@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class ManipuladorArquivo {
     static ArrayList<PesoArestas> ArrayPesosArestas = new ArrayList<PesoArestas>();
+    static ArrayList ArrayVertices = new ArrayList();
+    static String[] vertices_list;
     
     public static void coletarDados() {
     File file = new File("C:/Users/caiom/Git/PRIM-algorithm/grafo.txt");
@@ -16,13 +18,15 @@ public class ManipuladorArquivo {
     String nomeVertices = "";
     Integer qtd_vertice = 0; 
     String[] strToken;
-    PesoArestas pesoAresta = new PesoArestas();
     
 
     try{
         text = new Scanner(file);
 
         while(text.hasNextLine()) {
+            Vertice vertices = new Vertice();
+            PesoArestas pesoAresta = new PesoArestas();
+            
             line_number++;
             String line = text.nextLine();
 
@@ -39,10 +43,15 @@ public class ManipuladorArquivo {
                 qtd_vertice = Integer.parseInt(line);
             }
             
+            //Nome dos vertices
             if (line_number > 2 && line_number <= (2 + qtd_vertice) ){
+                vertices.setNome(line);
+                ArrayVertices.add(vertices);
+                
                 nomeVertices+= line + ", "; 
             }
             
+            //Arestas
             if ( line_number > (2 + qtd_vertice) ){
                 if (line.split(",").length > 1){
                     strToken = line.trim().split(",");
@@ -52,7 +61,8 @@ public class ManipuladorArquivo {
                     pesoAresta.setPesoAresta(1);
                 }
                 
-                pesoAresta.setVertices(strToken[0] + "," + strToken[1]);
+                pesoAresta.setVerticeOrigem(strToken[0]);
+                pesoAresta.setVerticeDestino(strToken[1]);
                 ArrayPesosArestas.add(pesoAresta);
                 
             }
@@ -61,6 +71,7 @@ public class ManipuladorArquivo {
                 System.out.println("ERRO: O grafo fornecido contém linha em branco, favor apagar!!");
             }
         }
+        vertices_list =  nomeVertices.trim().split(",");
         System.out.println("Os Vertices são: " + nomeVertices);
 
     } catch(IOException e) {

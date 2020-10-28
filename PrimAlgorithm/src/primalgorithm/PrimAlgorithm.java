@@ -1,14 +1,28 @@
 package primalgorithm;
 
-/**
- *
- * @author Caio Henrique MAchado de Olivera
- */
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class PrimAlgorithm {
     public static void main(String[] args) {
-    ManipuladorArquivo.coletarDados();    
-    
+	ArrayList G = new ArrayList();
+	ArrayList<PesoArestas> W = new ArrayList<PesoArestas>();
+        
+        
+        ManipuladorArquivo.coletarDados();   
+        
+        
+        // Obtem os dados estruturados e prontos para serem usados na classe PRIM
+        G.addAll(ManipuladorArquivo.ArrayVertices);
+        W.addAll(ManipuladorArquivo.ArrayPesosArestas);
+
+        try {
+            PRIMM.prim(G, W, "A");
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PrimAlgorithm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
         
 }
