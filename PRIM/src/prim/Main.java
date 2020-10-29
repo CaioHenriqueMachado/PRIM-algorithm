@@ -22,6 +22,8 @@ public class Main {
 	    
 	    PRIM.prim(G, W, "A");
 	    
+            
+            
 	}
 
 }
