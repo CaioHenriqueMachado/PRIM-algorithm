@@ -1,58 +1,32 @@
 package primalgorithm;
 
 public class Vertice {
-    /*
-    public String[] Adjacentes;
-    
-    public String[] getAdjacentes() {
-        return Adjacentes;
-    }
-
-
-    public void setAresta(String[] _adjacentes) {
-        Adjacentes = _adjacentes;
-    }
-    
-    */
     public String Nome;
     public Integer Custo = -1;
-    public Boolean ArestaConectada = false;
- /*
-    public Integer ID;
-
-
-    public Integer getID() {
-            return ID;
-    }
-*/
+    public String[] Aresta;
+    
     public String getNome() {
-            return Nome;
-    }
-
-    public Integer getCusto() {
-            return Custo;
+        return Nome;
     }
     
-    public Boolean getArestaConectada() {
-            return ArestaConectada;
+    public Integer getCusto() {
+        return Custo;
     }
-
+    
+    public String[] getAresta() {
+        return Aresta;
+    }
+    
+    public void setAresta(String[] _aresta) {
+        Aresta = _aresta;
+    }
+    
     public void setNome(String _nome) {
-            Nome = _nome;
+        Nome = _nome;
     }
 
     public void setCusto(Integer _custo) {
-            Custo = _custo;
+        Custo = _custo;
     }
-    
-    public void setArestaConectada(Boolean _arestaConectada) {
-            ArestaConectada = _arestaConectada;
-    }
-/*
-    public void setID(Integer _id) {
-            ID = _id;
-    }
-*/
-
 }
 

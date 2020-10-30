@@ -12,10 +12,10 @@ public class PRIMM {
     
     static ArrayList<Vertice> auxKey = new ArrayList<Vertice>();
     static ArrayList<Vertice> PI = new ArrayList<Vertice>();
-    static ArrayList<PesoArestas> W = new ArrayList<PesoArestas>();
+    static ArrayList<Aresta> W = new ArrayList<Aresta>();
 
     @SuppressWarnings("unchecked")
-    public static void prim(ArrayList<Vertice> G,ArrayList<PesoArestas> W,String r) throws InterruptedException {
+    public static void prim(ArrayList<Vertice> G,ArrayList<Aresta> W,String r) throws InterruptedException {
         System.out.println("EXECUTANDO PRIM");
         
         String R;

@@ -1,6 +1,6 @@
 package primalgorithm;
 
-public class PesoArestas {
+public class Aresta {
     public Integer PesoAresta;
     public String VerticeOrigem;
     public String VerticeDestino;

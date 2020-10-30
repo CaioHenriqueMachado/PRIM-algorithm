@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 
 public class ManipuladorArquivo {
-    static ArrayList<PesoArestas> ArrayPesosArestas = new ArrayList<PesoArestas>();
+    static ArrayList<Aresta> ArrayPesosArestas = new ArrayList<Aresta>();
     static ArrayList ArrayVertices = new ArrayList();
     static String[] vertices_list;
     
@@ -25,7 +25,7 @@ public class ManipuladorArquivo {
 
         while(text.hasNextLine()) {
             Vertice vertices = new Vertice();
-            PesoArestas pesoAresta = new PesoArestas();
+            Aresta aresta = new Aresta();
             
             line_number++;
             String line = text.nextLine();
@@ -55,15 +55,15 @@ public class ManipuladorArquivo {
             if ( line_number > (2 + qtd_vertice) ){
                 if (line.split(",").length > 1){
                     strToken = line.trim().split(",");
-                    pesoAresta.setPesoAresta(Integer.parseInt(strToken[2]));
+                    aresta.setPesoAresta(Integer.parseInt(strToken[2]));
                 }else {
                     strToken = line.trim().split(",");
-                    pesoAresta.setPesoAresta(1);
+                    aresta.setPesoAresta(1);
                 }
                 
-                pesoAresta.setVerticeOrigem(strToken[0]);
-                pesoAresta.setVerticeDestino(strToken[1]);
-                ArrayPesosArestas.add(pesoAresta);
+                aresta.setVerticeOrigem(strToken[0]);
+                aresta.setVerticeDestino(strToken[1]);
+                ArrayPesosArestas.add(aresta);
                 
             }
             

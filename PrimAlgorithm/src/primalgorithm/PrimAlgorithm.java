@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class PrimAlgorithm {
     public static void main(String[] args) {
 	ArrayList G = new ArrayList();
-	ArrayList<PesoArestas> W = new ArrayList<PesoArestas>();
+	ArrayList<Aresta> W = new ArrayList<Aresta>();
         
         
         ManipuladorArquivo.coletarDados();   
