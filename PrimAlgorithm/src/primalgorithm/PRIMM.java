@@ -17,30 +17,37 @@ public class PRIMM {
     @SuppressWarnings("unchecked")
     public static void prim(ArrayList<Vertice> G,ArrayList<Aresta> W,String r) throws InterruptedException {
         System.out.println("EXECUTANDO PRIM");
-        
-        String R;
+
         String aux;
         String U;
         
         ArrayList<String> Q = new ArrayList<>();
         Collections.addAll(Q, ManipuladorArquivo.vertices_list);
         
-        R = r;
-        
-     
+
+        //APLICAR CUSTO ZERO NO VERTICE INICIAL
         for (int i = 0; i<Q.size(); i++){
-            //System.out.println(G.get(i).getNome());
-            
-            //APLICA ZERO NO VERTICE INICIAL
-            if (G.get(i).getNome().equals(R)){
+            if (G.get(i).getNome().equals(r)){
                 G.get(i).setCusto(0);
             }
         }
-    
-        //Vertice usado
-        U = R;
+        
+        //PEGA VERTICE INICIAL
+        U = r;
+        
+        //REMOVE DA LISTA
+      
+        for (int i = 0; i<Q.size(); i++){
+            if (Q.get(i).equals(U)){
+                Q.remove(i);
+                break;
+            }
+        }
+
+        
         
         //PASSO 1
+        /*
         for (int i=0; i<W.size(); i++){
             if (W.get(i).getVerticeOrigem().equals(U)){
                 aux = W.get(i).getVerticeDestino();
@@ -55,7 +62,7 @@ public class PRIMM {
                 }
             }
         }
-        
+        */
         /*
         System.out.println(G.get(0).getNome());
         System.out.println(G.get(0).getCusto());
@@ -68,7 +75,8 @@ public class PRIMM {
         System.out.println(G.get(2).getCusto());
         */
         
-     
+     /*
+        
         
         int k = 0;
         boolean active = false;
@@ -88,7 +96,7 @@ public class PRIMM {
             } else {
                 
                 for (int i=0; i<W.size(); i++){
-                    if (W.get(i).getVerticeOrigem().equals(U) /*e DESTINO ESTEJA EM Q*/){
+                    if (W.get(i).getVerticeOrigem().equals(U) ){
                         aux = W.get(i).getVerticeDestino();
 
                         for (int j=0; j<G.size(); j++){
@@ -116,9 +124,9 @@ public class PRIMM {
         }
         
         
+       
         
-        
-        
+        */
         
         
         
