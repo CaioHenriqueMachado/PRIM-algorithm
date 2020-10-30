@@ -20,7 +20,7 @@ public class PRIMM {
 
         Boolean target = false;
         String U;
-        String v = null;
+        String v = ".";
         
         ArrayList<String> Q = new ArrayList<>();
         Collections.addAll(Q, ManipuladorArquivo.vertices_list);
@@ -47,16 +47,19 @@ public class PRIMM {
 
         
         //PASSO 1
-        
+        //ARRUMAR O ERRO PRA VER PRINTAR TUDO
+        //FALTOU DESCARTAR OS CASOS QUE JA SAIRAM DO Q
         for (int z = 0; z<Q.size(); z++){
             
             for (int i=0; i<W.size(); i++){
                 if ( W.get(i).getVerticeOrigem().equals(U) ){
+                    //System.out.println(W.get(i).getVerticeDestino());
                     v = W.get(i).getVerticeDestino();
                     target = true;
                 }
 
                 if ( W.get(i).getVerticeDestino().equals(U) ){
+                    //System.out.println(W.get(i).getVerticeOrigem());
                     v = W.get(i).getVerticeOrigem();
                     target = true;
                 }
@@ -82,25 +85,24 @@ public class PRIMM {
             }
             
             U = Q.get(z);
+            
         }
         
         System.out.println("Fim");
+        /*
+        for (int p = 0; p<Q.size(); p++){
+            System.out.println(G.get(p).getVerticeProximo() + " => " + G.get(p).getCusto());
+ 
+        }
+        */
+
+   
     }
         
         
         
         
-        /*
-        System.out.println(G.get(0).getNome());
-        System.out.println(G.get(0).getCusto());
-        
-        
-        System.out.println(G.get(1).getNome());
-        System.out.println(G.get(1).getCusto());
-        
-        System.out.println(G.get(2).getNome());
-        System.out.println(G.get(2).getCusto());
-        */
+ 
         
      /*
         
