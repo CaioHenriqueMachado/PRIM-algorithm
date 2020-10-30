@@ -18,8 +18,9 @@ public class PRIMM {
     public static void prim(ArrayList<Vertice> G,ArrayList<Aresta> W,String r) throws InterruptedException {
         System.out.println("EXECUTANDO PRIM");
 
-        String aux;
+        Boolean target = false;
         String U;
+        String v = null;
         
         ArrayList<String> Q = new ArrayList<>();
         Collections.addAll(Q, ManipuladorArquivo.vertices_list);
@@ -45,24 +46,50 @@ public class PRIMM {
         }
 
         
-        
         //PASSO 1
-        /*
-        for (int i=0; i<W.size(); i++){
-            if (W.get(i).getVerticeOrigem().equals(U)){
-                aux = W.get(i).getVerticeDestino();
-
-                for (int j=0; j<G.size(); j++){
-                    if(G.get(j).getNome().equals(aux)){
-                        if (G.get(j).getCusto() > W.get(i).getPesoAresta() || G.get(j).getCusto().equals(-1)){
-                            G.get(j).setCusto(W.get(i).getPesoAresta());
-                        }
-                    }
-
+        
+        for (int z = 0; z<Q.size(); z++){
+            
+            for (int i=0; i<W.size(); i++){
+                if ( W.get(i).getVerticeOrigem().equals(U) ){
+                    v = W.get(i).getVerticeDestino();
+                    target = true;
                 }
+
+                if ( W.get(i).getVerticeDestino().equals(U) ){
+                    v = W.get(i).getVerticeOrigem();
+                    target = true;
+                }
+
+
+                if ( target.equals(true) ){
+
+                    for (int j=0; j<G.size(); j++){
+                        if(G.get(j).getNome().equals(v)){
+                            if (G.get(j).getCusto() > W.get(i).getPesoAresta() || G.get(j).getCusto().equals(-1)){
+                                G.get(j).setCusto(W.get(i).getPesoAresta());
+                                G.get(j).setVerticeProximo(W.get(i).getVerticeOrigem() + ", " + W.get(i).getVerticeDestino());
+                                break;
+                            }
+                        }
+
+                    }
+                }
+
+
+
+                target = false;
             }
+            
+            U = Q.get(z);
         }
-        */
+        
+        System.out.println("Fim");
+    }
+        
+        
+        
+        
         /*
         System.out.println(G.get(0).getNome());
         System.out.println(G.get(0).getCusto());

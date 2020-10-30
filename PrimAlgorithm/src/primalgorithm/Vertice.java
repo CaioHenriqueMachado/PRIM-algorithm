@@ -3,7 +3,7 @@ package primalgorithm;
 public class Vertice {
     public String Nome;
     public Integer Custo = -1;
-    public String[] Aresta;
+    public String verticeProximo;
     
     public String getNome() {
         return Nome;
@@ -13,12 +13,12 @@ public class Vertice {
         return Custo;
     }
     
-    public String[] getAresta() {
-        return Aresta;
+    public String getVerticeProximo() {
+        return verticeProximo;
     }
     
-    public void setAresta(String[] _aresta) {
-        Aresta = _aresta;
+    public void setVerticeProximo(String _verticeProximo) {
+        verticeProximo = _verticeProximo;
     }
     
     public void setNome(String _nome) {
