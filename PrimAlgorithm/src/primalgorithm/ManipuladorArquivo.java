@@ -11,6 +11,7 @@ public class ManipuladorArquivo {
     static ArrayList ArrayVertices = new ArrayList();
     static ArrayList ArrayConfig = new ArrayList();
     static String[] vertices_list;
+    static Boolean Erro = false;
     
     public static void coletarDados() {
     File file = new File("C:/Users/caiom/Git/PRIM-algorithm/grafo.txt");
@@ -27,11 +28,14 @@ public class ManipuladorArquivo {
         while(text.hasNextLine()) {
             Vertice vertices = new Vertice();
             Aresta aresta = new Aresta();
-            
-            
-            line_number++;
             String line = text.nextLine();
-
+            line_number++;
+            
+            if(line.isEmpty()){
+                System.out.println("ERRO:GRAFO COM LINHA EM BRANCO!!");
+                Erro = true;
+                break;
+            }
             
             if (line_number == 1){
                 switch(line){
@@ -41,22 +45,17 @@ public class ManipuladorArquivo {
                         break;
                     case "2":
                         System.out.println("Grafo direcionado !!");
-                        config.Direcionado = true;
+                        config.Direcionado = false;
                         break;
                     default:
-                        System.out.println("Tipo de grafo inválido");
+                        System.out.println("ERRO: TIPO DE GRAFO INVÁLIDO !!");
+                        Erro = true;
                         break;
                 }
             
             }
             
-            if (line.equals("2") && line_number == 1){
-                System.out.println("Grafo não direcionado !!");
-                config.Direcionado = false;
-            }
-            
             if (line_number == 2){
-                System.out.println("Número de vértices: " + line);
                 qtd_vertice = Integer.parseInt(line);
             }
             
@@ -83,24 +82,23 @@ public class ManipuladorArquivo {
                 
             }
             
-            if(line.isEmpty()){
-                System.out.println("ERRO: O grafo fornecido contém linha em branco, favor apagar!!");
-            }
+
         }
         
         config.setVerticeInicial(PrimAlgorithm.verticeInicial);
         ArrayConfig.add(config);
         
+        if (!Erro){
+            vertices_list =  nomeVertices.trim().split(","); 
+            System.out.println("São " + qtd_vertice + " vertices, sendo eles: " + nomeVertices);
+        }
         
-        vertices_list =  nomeVertices.trim().split(","); 
-        System.out.println("Os Vertices são: " + nomeVertices);
 
     } catch(IOException e) {
         System.out.println(e.getMessage());
-    } finally{
-        System.out.println("Arquivo lido com sucesso !!");
     }
-        text.close();
+    
+    text.close();
     }
 
     private static void Switch(String line) {

@@ -19,20 +19,25 @@ public class PrimAlgorithm {
         
         ManipuladorArquivo.coletarDados();   
         
-        
+        if (ManipuladorArquivo.Erro){
+            System.out.println("EXECUÇÃO FINALIZADA !!");
+            
+        }else {
+            // Obtem os dados estruturados e prontos para serem usados na classe PRIM
+            Vertices.addAll(ManipuladorArquivo.ArrayVertices);
+            Arestas.addAll(ManipuladorArquivo.ArrayPesosArestas);
+            Configuracao.addAll(ManipuladorArquivo.ArrayConfig);
+
+
+            try {
+                PRIMM.prim(Vertices, Arestas, Configuracao);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PrimAlgorithm.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
 
         
-        // Obtem os dados estruturados e prontos para serem usados na classe PRIM
-        Vertices.addAll(ManipuladorArquivo.ArrayVertices);
-        Arestas.addAll(ManipuladorArquivo.ArrayPesosArestas);
-        Configuracao.addAll(ManipuladorArquivo.ArrayConfig);
-        
-        
-        try {
-            PRIMM.prim(Vertices, Arestas, Configuracao);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(PrimAlgorithm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
         
 }
