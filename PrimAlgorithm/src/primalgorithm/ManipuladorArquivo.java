@@ -69,17 +69,17 @@ public class ManipuladorArquivo {
             
             //Arestas
             if ( line_number > (2 + qtd_vertice) ){
-                if (line.split(",").length > 1){
+                if (line.split(",").length == 3){
                     strToken = line.trim().split(",");
                     aresta.setPesoAresta(Integer.parseInt(strToken[2]));
                 }else {
-                    strToken = line.trim().split(",");
-                    aresta.setPesoAresta(1);
+                    System.out.println("ERRO: ARESTA SEM CUSTO !!");
+                    Erro = true;
+                    break;
                 }
                 aresta.setVerticeOrigem(strToken[0]);
                 aresta.setVerticeDestino(strToken[1]);
                 ArrayPesosArestas.add(aresta);
-                
             }
             
 
