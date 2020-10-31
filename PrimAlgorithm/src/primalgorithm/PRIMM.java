@@ -17,6 +17,7 @@ public class PRIMM {
         Boolean target = false;
         String U;
         String v = ".";
+        String aux;
         
         ArrayList<String> Q = new ArrayList<>();
         Collections.addAll(Q, ManipuladorArquivo.vertices_list);
@@ -32,34 +33,43 @@ public class PRIMM {
         //PEGA VERTICE INICIAL
         U = r;
         
-        //REMOVE DA LISTA
-      
+        //ORDENA COM BASE NO PRIMEIRO DA LISTA
         for (int i = 0; i<Q.size(); i++){
             if (Q.get(i).equals(U)){
-                Q.remove(i);
+                aux = Q.get(i);
+                Q.set(i, Q.get(0));
+                Q.set(0, aux );
                 break;
-            }
+            } 
         }
-
         
-        //FALTOU DESCARTAR OS CASOS QUE JA SAIRAM DO Q
-
-        for (int z = 0; z<Q.size(); z++){
+        
+        while(!Q.isEmpty()){
+            U = Q.get(0);
             
+            //LISTA DE ARESTAS(14 LAÇOS)
             for (int i=0; i<W.size(); i++){
                 
+                
                 if ( W.get(i).getVerticeOrigem().equals(U) ){
-                    v = W.get(i).getVerticeDestino();
-                    target = true;
+                    for ( int k = 0; k < Q.size(); k++ ){
+                        if (Q.get(k).equals(W.get(i).getVerticeDestino())){
+                            v = W.get(i).getVerticeDestino();
+                            target = true;
+                            break;
+                        }
+                    }
                 }
 
                 if ( W.get(i).getVerticeDestino().equals(U) ){
-                    //System.out.println(W.get(i).getVerticeOrigem());
-                    
-                    v = W.get(i).getVerticeOrigem();
-                    target = true;
+                    for ( int k = 0; k < Q.size(); k++ ){
+                        if (Q.get(k).equals(W.get(i).getVerticeOrigem())){
+                            v = W.get(i).getVerticeOrigem();
+                            target = true;
+                            break;
+                        }
+                    }
                 }
-
 
                 if ( target.equals(true) ){
 
@@ -75,95 +85,17 @@ public class PRIMM {
                     }
                 }
 
-
-
                 target = false;
             }
-            U = Q.get(z);
             
+            Q.remove(0);
         }
         
-     
-        for (int p = 0; p<Q.size(); p++){
-            System.out.println(G.get(p).getVerticeProximo() + " => " + G.get(p).getCusto());
- 
+        for (int p = 0; p<G.size(); p++){
+            System.out.println(G.get(p).getVerticeProximo()+ " => " + G.get(p).getCusto());
         }
-        
-
    
-
         
-        
-        
-        
- 
-        
-     /*
-        
-        
-        int k = 0;
-        boolean active = false;
-
-        while (!Q.isEmpty()) {
-            U = Q.get(k);
-            System.out.println("->" + U);
-            if (active == false){
-                
-                if (Q.get(k).equals(R)){
-                    //System.out.println(" " + Q.get(k) + " REMOVIDO");
-                    Q.remove(k);
-                    U = Q.get(k);
-                    active = true;
-                }
-                
-            } else {
-                
-                for (int i=0; i<W.size(); i++){
-                    if (W.get(i).getVerticeOrigem().equals(U) ){
-                        aux = W.get(i).getVerticeDestino();
-
-                        for (int j=0; j<G.size(); j++){
-                            if(G.get(j).getNome().equals(aux)){
-                                if (G.get(j).getCusto() > W.get(i).getPesoAresta() || G.get(j).getCusto().equals(-1)){
-                                    G.get(j).setCusto(W.get(i).getPesoAresta());
-                                    
-                                    W.remove(i);
-                                }
-                            }
-
-                        }
-                    }
-                }
-                //System.out.println(Q.get(k) + " REMOVIDO");
-                Q.remove(k);
-            }
-        }
-        System.out.println("ACABOU!! ");
-        
-        
-        for (int i = 0; i<3; i++){
-        System.out.println("Nome: " + G.get(i).getNome()+ " " + G.get(i).getCusto());
-        System.out.println("");
-        }
-        
-        
-       
-        
-        */
-        
-        
-        
-        /*
-        System.out.println(G.get(0).getCusto());
-        System.out.println(G.get(1).getCusto());
-        */
-        
-        
-        /*
-        for(int i = 0; i < Q.length; i++){;
-          
-        }
-        */
     }
 
 }
