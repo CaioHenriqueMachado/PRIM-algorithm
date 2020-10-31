@@ -8,11 +8,11 @@ import java.util.Collections;
  *
  * @author caiom
  */
-public class PRIMM {
+public class PRIM {
 
     @SuppressWarnings("unchecked")
     public static void prim(ArrayList<Vertice> Vertice,ArrayList<Aresta> Aresta,ArrayList<Configuracao> config) throws InterruptedException {
-        System.out.println("EXECUTANDO PRIM");
+        System.out.println("Conexões:");
 
         Boolean target = false;
         String U;
@@ -84,7 +84,7 @@ public class PRIMM {
             Q.remove(0);
         }
         
-        for (int p = 0; p<Vertice.size(); p++){
+        for (int p = 1; p<Vertice.size(); p++){
             System.out.println(Vertice.get(p).getVerticeProximo()+ " => " + Vertice.get(p).getCusto());
         }
         

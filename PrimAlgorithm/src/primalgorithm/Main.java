@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class PrimAlgorithm {
+public class Main {
     
     static String verticeInicial;
     
@@ -30,9 +30,9 @@ public class PrimAlgorithm {
 
 
             try {
-                PRIMM.prim(Vertices, Arestas, Configuracao);
+                PRIM.prim(Vertices, Arestas, Configuracao);
             } catch (InterruptedException ex) {
-                Logger.getLogger(PrimAlgorithm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             } 
         }
 

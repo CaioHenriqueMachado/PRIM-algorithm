@@ -86,7 +86,7 @@ public class ManipuladorArquivo {
 
             }
 
-            config.setVerticeInicial(PrimAlgorithm.verticeInicial);
+            config.setVerticeInicial(Main.verticeInicial);
             ArrayConfig.add(config);
 
             if (!Erro){
