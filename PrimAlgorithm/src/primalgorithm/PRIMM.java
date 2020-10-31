@@ -11,7 +11,7 @@ import java.util.Collections;
 public class PRIMM {
 
     @SuppressWarnings("unchecked")
-    public static void prim(ArrayList<Vertice> G,ArrayList<Aresta> W,String r) throws InterruptedException {
+    public static void prim(ArrayList<Vertice> Vertice,ArrayList<Aresta> Aresta,ArrayList<Configuracao> config) throws InterruptedException {
         System.out.println("EXECUTANDO PRIM");
 
         Boolean target = false;
@@ -23,15 +23,15 @@ public class PRIMM {
         Collections.addAll(Q, ManipuladorArquivo.vertices_list);
         
 
+        //PEVerticeA VERTICE INICIAL
+        U = config.get(0).getVerticeInicial();
+        
         //APLICAR CUSTO ZERO NO VERTICE INICIAL
         for (int i = 0; i<Q.size(); i++){
-            if (G.get(i).getNome().equals(r)){
-                G.get(i).setCusto(0);
+            if (Vertice.get(i).getNome().equals(U)){
+                Vertice.get(i).setCusto(0);
             }
         }
-        
-        //PEGA VERTICE INICIAL
-        U = r;
         
         //ORDENA COM BASE NO PRIMEIRO DA LISTA
         for (int i = 0; i<Q.size(); i++){
@@ -43,28 +43,25 @@ public class PRIMM {
             } 
         }
         
-        
         while(!Q.isEmpty()){
             U = Q.get(0);
             
-            //LISTA DE ARESTAS(14 LAÇOS)
-            for (int i=0; i<W.size(); i++){
+            for (int i=0; i<Aresta.size(); i++){
                 
-                
-                if ( W.get(i).getVerticeOrigem().equals(U) ){
+                if ( Aresta.get(i).getVerticeOrigem().equals(U) ){
                     for ( int k = 0; k < Q.size(); k++ ){
-                        if (Q.get(k).equals(W.get(i).getVerticeDestino())){
-                            v = W.get(i).getVerticeDestino();
+                        if (Q.get(k).equals(Aresta.get(i).getVerticeDestino())){
+                            v = Aresta.get(i).getVerticeDestino();
                             target = true;
                             break;
                         }
                     }
                 }
 
-                if ( W.get(i).getVerticeDestino().equals(U) ){
+                if ( Aresta.get(i).getVerticeDestino().equals(U) && !config.get(0).getDirecionado() ){
                     for ( int k = 0; k < Q.size(); k++ ){
-                        if (Q.get(k).equals(W.get(i).getVerticeOrigem())){
-                            v = W.get(i).getVerticeOrigem();
+                        if (Q.get(k).equals(Aresta.get(i).getVerticeOrigem())){
+                            v = Aresta.get(i).getVerticeOrigem();
                             target = true;
                             break;
                         }
@@ -72,30 +69,24 @@ public class PRIMM {
                 }
 
                 if ( target.equals(true) ){
-
-                    for (int j=0; j<G.size(); j++){
-                        if(G.get(j).getNome().equals(v)){
-                            if (G.get(j).getCusto() > W.get(i).getPesoAresta() || G.get(j).getCusto().equals(-1)){
-                                G.get(j).setCusto(W.get(i).getPesoAresta());
-                                G.get(j).setVerticeProximo(W.get(i).getVerticeOrigem() + ", " + W.get(i).getVerticeDestino());
+                    for (int j=0; j<Vertice.size(); j++){
+                        if(Vertice.get(j).getNome().equals(v)){
+                            if (Vertice.get(j).getCusto() > Aresta.get(i).getPesoAresta() || Vertice.get(j).getCusto().equals(-1)){
+                                Vertice.get(j).setCusto(Aresta.get(i).getPesoAresta());
+                                Vertice.get(j).setVerticeProximo(Aresta.get(i).getVerticeOrigem() + ", " + Aresta.get(i).getVerticeDestino());
                                 break;
                             }
                         }
-
                     }
                 }
-
                 target = false;
             }
-            
             Q.remove(0);
         }
         
-        for (int p = 0; p<G.size(); p++){
-            System.out.println(G.get(p).getVerticeProximo()+ " => " + G.get(p).getCusto());
+        for (int p = 0; p<Vertice.size(); p++){
+            System.out.println(Vertice.get(p).getVerticeProximo()+ " => " + Vertice.get(p).getCusto());
         }
-   
         
     }
-
 }

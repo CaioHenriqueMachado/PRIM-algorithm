@@ -6,20 +6,30 @@ import java.util.logging.Logger;
 
 
 public class PrimAlgorithm {
+    
+    static String verticeInicial;
+    
     public static void main(String[] args) {
-	ArrayList G = new ArrayList();
-	ArrayList W = new ArrayList();
+	ArrayList Vertices = new ArrayList();
+	ArrayList Arestas = new ArrayList();
+        ArrayList Configuracao = new ArrayList();
         
+        //Escolher vertice inicial
+        verticeInicial = "A";
         
         ManipuladorArquivo.coletarDados();   
         
         
-        // Obtem os dados estruturados e prontos para serem usados na classe PRIM
-        G.addAll(ManipuladorArquivo.ArrayVertices);
-        W.addAll(ManipuladorArquivo.ArrayPesosArestas);
 
+        
+        // Obtem os dados estruturados e prontos para serem usados na classe PRIM
+        Vertices.addAll(ManipuladorArquivo.ArrayVertices);
+        Arestas.addAll(ManipuladorArquivo.ArrayPesosArestas);
+        Configuracao.addAll(ManipuladorArquivo.ArrayConfig);
+        
+        
         try {
-            PRIMM.prim(G, W, "A");
+            PRIMM.prim(Vertices, Arestas, Configuracao);
         } catch (InterruptedException ex) {
             Logger.getLogger(PrimAlgorithm.class.getName()).log(Level.SEVERE, null, ex);
         }
