@@ -21,11 +21,11 @@ public class Aresta {
             PesoAresta = _pesoAresta;
     }
 
-    public void setVerticeOrigem(String _vertice) {
-        VerticeOrigem = _vertice;
+    public void setVerticeOrigem(String _verticeO) {
+        VerticeOrigem = _verticeO;
     }
-    public void setVerticeDestino(String _vertice) {
-        VerticeDestino = _vertice;
+    public void setVerticeDestino(String _verticeD) {
+        VerticeDestino = _verticeD;
     }
 
 }

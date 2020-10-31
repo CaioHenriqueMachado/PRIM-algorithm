@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 
 public class ManipuladorArquivo {
-    static ArrayList<Aresta> ArrayPesosArestas = new ArrayList<Aresta>();
+    static ArrayList ArrayPesosArestas = new ArrayList();
     static ArrayList ArrayVertices = new ArrayList();
     static String[] vertices_list;
     
@@ -48,7 +48,7 @@ public class ManipuladorArquivo {
                 vertices.setNome(line);
                 ArrayVertices.add(vertices);
                 
-                nomeVertices+= line + ", "; 
+                nomeVertices+= line + ","; 
             }
             
             //Arestas
@@ -60,7 +60,6 @@ public class ManipuladorArquivo {
                     strToken = line.trim().split(",");
                     aresta.setPesoAresta(1);
                 }
-                
                 aresta.setVerticeOrigem(strToken[0]);
                 aresta.setVerticeDestino(strToken[1]);
                 ArrayPesosArestas.add(aresta);
@@ -71,7 +70,7 @@ public class ManipuladorArquivo {
                 System.out.println("ERRO: O grafo fornecido contém linha em branco, favor apagar!!");
             }
         }
-        vertices_list =  nomeVertices.trim().split(",");
+        vertices_list =  nomeVertices.trim().split(","); 
         System.out.println("Os Vertices são: " + nomeVertices);
 
     } catch(IOException e) {

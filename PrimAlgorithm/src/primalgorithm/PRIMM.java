@@ -9,10 +9,6 @@ import java.util.Collections;
  * @author caiom
  */
 public class PRIMM {
-    
-    static ArrayList<Vertice> auxKey = new ArrayList<Vertice>();
-    static ArrayList<Vertice> PI = new ArrayList<Vertice>();
-    static ArrayList<Aresta> W = new ArrayList<Aresta>();
 
     @SuppressWarnings("unchecked")
     public static void prim(ArrayList<Vertice> G,ArrayList<Aresta> W,String r) throws InterruptedException {
@@ -46,20 +42,20 @@ public class PRIMM {
         }
 
         
-        //PASSO 1
-        //ARRUMAR O ERRO PRA VER PRINTAR TUDO
         //FALTOU DESCARTAR OS CASOS QUE JA SAIRAM DO Q
+
         for (int z = 0; z<Q.size(); z++){
             
             for (int i=0; i<W.size(); i++){
+                
                 if ( W.get(i).getVerticeOrigem().equals(U) ){
-                    //System.out.println(W.get(i).getVerticeDestino());
                     v = W.get(i).getVerticeDestino();
                     target = true;
                 }
 
                 if ( W.get(i).getVerticeDestino().equals(U) ){
                     //System.out.println(W.get(i).getVerticeOrigem());
+                    
                     v = W.get(i).getVerticeOrigem();
                     target = true;
                 }
@@ -83,21 +79,19 @@ public class PRIMM {
 
                 target = false;
             }
-            
             U = Q.get(z);
             
         }
         
-        System.out.println("Fim");
-        /*
+     
         for (int p = 0; p<Q.size(); p++){
             System.out.println(G.get(p).getVerticeProximo() + " => " + G.get(p).getCusto());
  
         }
-        */
+        
 
    
-    }
+
         
         
         
